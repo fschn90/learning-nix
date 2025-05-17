@@ -1,15 +1,18 @@
-# Learning how to package with nix
+# Learning nix
 
 doing the tutorials with examples step by step.
 
-- currenctyl working on: https://nix.dev/tutorials/packaging-existing-software#fixing-build-failures
+## [nix.dev](https://nix.dev/tutorials/):
 
-## done and doing:
-- [x] ([Nix language basics](https://nix.dev/tutorials/nix-language))
-- [] ([Packaging with Nix](https://nix.dev/tutorials/packaging-existing-software))
+| No | Chapter | Finished |
+| --- | --- | --- |
+| 1 | [Frist Steps](https://nix.dev/tutorials/first-steps/) | 15.03.25 |
+| 2 | [Nix language basics](https://nix.dev/tutorials/nix-language) | 15.03.25 |
+| 3 | [Packaging existing software](https://nix.dev/tutorials/packaging-existing-software) | 17.03.25 |
+| 4 | [Package parameters and overrides with callPackage](https://nix.dev/tutorials/callpackage) |  |
+| 5 | [Working with local files](https://nix.dev/tutorials/working-with-local-files) |  |
+| 6 | [Cross compilation](https://nix.dev/tutorials/cross-compilation/) |  |
+| 7 | [Module system, 1. A basic Module](https://nix.dev/tutorials/module-system/a-basic-module/) | 17.05.25 |
+| 8 | [NixOs](https://nix.dev/tutorials/nixos/) |  |
 
-## will be doing:
-- [ ] ([Nix Pills](https://nixos.org/guides/nix-pills/))
- 
-
-
+## Doing Next:[Nix Pills](https://nixos.org/guides/nix-pills/)
