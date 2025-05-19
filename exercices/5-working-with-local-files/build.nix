@@ -1,7 +1,15 @@
 { stdenv, lib }:
 let
   fs = lib.fileset;
-  sourceFiles = fs.gitTracked ./.;
+  sourceFiles =
+    fs.intersection
+      (fs.gitTracked ./.)
+      (fs.unions [
+        ./hello.txt
+        ./world.txt
+        ./build.sh
+        ./src
+      ]);
 in
 
 fs.trace sourceFiles
