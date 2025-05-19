@@ -1,12 +1,13 @@
 { stdenv, lib }:
 let
   fs = lib.fileset;
-  sourceFiles = ./hello.txt;
+  sourceFiles = fs.difference ./. ./result;
 in
 
 fs.trace sourceFiles
 
-stdenv.mkDerivation {
+  stdenv.mkDerivation
+{
   name = "fileset";
   src = fs.toSource {
     root = ./.;
@@ -14,6 +15,6 @@ stdenv.mkDerivation {
   };
   postInstall = ''
     mkdir $out
-    cp -v hello.txt $out
+    cp -v {hello,world}.txt $out
   '';
 }
