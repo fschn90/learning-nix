@@ -1,7 +1,15 @@
 { stdenv, lib }:
 let
   fs = lib.fileset;
-  sourceFiles = fs.difference ./. (fs.maybeMissing ./result);
+  sourceFiles =
+    fs.difference
+      ./.
+      (fs.unions [
+        (fs.maybeMissing ./result)
+        ./default.nix
+        ./build.nix
+        ./npins
+      ]);
 in
 
 fs.trace sourceFiles
@@ -18,3 +26,5 @@ fs.trace sourceFiles
     cp -v {hello,world}.txt $out
   '';
 }
+
+
