@@ -6,8 +6,7 @@ let
       ./.
       (fs.unions [
         (fs.maybeMissing ./result)
-        ./default.nix
-        ./build.nix
+        (fs.fileFilter (file: file.hasExt "nix") ./.)
         ./npins
       ]);
 in
@@ -26,5 +25,4 @@ fs.trace sourceFiles
     cp -v {hello,world}.txt $out
   '';
 }
-
 
