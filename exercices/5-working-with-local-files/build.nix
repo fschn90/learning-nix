@@ -1,15 +1,7 @@
 { stdenv, lib }:
 let
   fs = lib.fileset;
-  sourceFiles = fs.unions [
-    ./hello.txt
-    ./world.txt
-    ./build.sh
-    (fs.fileFilter
-      (file: file.hasExt "c" || file.hasExt "h")
-      ./src
-    )
-  ];
+  sourceFiles = fs.gitTracked ./.;
 in
 
 fs.trace sourceFiles
