@@ -7,4 +7,10 @@
     };
   };
 
-}
+  config = {
+    scripts.output = ''
+      ./maps.sh size=640x640 scale=2 | feh -
+    '';
+  };
+
+}  
