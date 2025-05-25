@@ -4,7 +4,13 @@
     scripts.output = lib.mkOption {
       type = lib.types.package;
     };
+
+    requestParams = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+    };
   };
+
+
 
   config = {
     scripts.output = pkgs.writeShellApplication {
@@ -14,5 +20,11 @@
         ${./map.sh} size=640x640 scale=2 | feh -
       '';
     };
+
+    requestParams = [
+      "size=640x640"
+      "scale=2"
+    ];
   };
+
 }
