@@ -9,6 +9,7 @@
       type = lib.types.package;
     };
 
+
     requestParams = lib.mkOption {
       type = lib.types.listOf lib.types.str;
     };
@@ -17,11 +18,11 @@
       zoom = lib.mkOption {
         type = lib.types.nullOr lib.types.int;
         default = 10;
+      };
 
-        center = lib.mkOption {
-          type = lib.types.nullOr lib.types.str;
-          default = "switzerland";
-        };
+      center = lib.mkOption {
+        type = lib.types.nullOr lib.types.str;
+        default = "switzerland";
       };
     };
   };
@@ -57,3 +58,5 @@
   };
 
 }
+
+
