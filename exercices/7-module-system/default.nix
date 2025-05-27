@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, config, ... }: {
 
   options = {
     scripts.output = lib.mkOption {
@@ -17,7 +17,8 @@
       name = "map";
       runtimeInputs = with pkgs; [ curl feh ];
       text = ''
-        ${./map.sh} size=640x640 scale=2 | feh -
+        ${./map} ${lib.concatStringsSep " "
+          config.requestParams} | feh -
       '';
     };
 
