@@ -12,7 +12,7 @@
     map = {
       zoom = lib.mkOption {
         type = lib.types.nullOr lib.types.int;
-        default = null;
+        default = 10;
       };
     };
   };
