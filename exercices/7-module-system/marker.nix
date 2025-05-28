@@ -82,6 +82,12 @@ in
           "markers=\"${lib.concatStringsSep "|" attributes}\"";
       in
       builtins.map paramForMarker config.map.markers;
+
+    ## users for show
+    users."test".departure.location = "new york";
+    users."acab".departure.location = "caracas";
+    users."yuhu".departure.location = "shenzhen";
+
   };
 
 }
