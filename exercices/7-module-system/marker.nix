@@ -1,5 +1,12 @@
 { pkgs, lib, config, ... }:
 let
+  # Returns the uppercased first letter
+  # or number of a string
+  firstUpperAlnum = str:
+    lib.mapNullable lib.head
+      (builtins.match "[^A-Z0-9]*([A-Z0-9]).*"
+        (lib.toUpper str));
+
   markerType = lib.types.submodule {
     options = {
       location = lib.mkOption {
@@ -15,14 +22,19 @@ let
     };
   };
 
-  userType = lib.types.submodule {
+  userType = lib.types.submodule ({ name, ... }: {
     options = {
       departure = lib.mkOption {
         type = markerType;
         default = { };
       };
     };
-  };
+
+    config = {
+      departure.style.label = lib.mkDefault
+        (firstUpperAlnum name);
+    };
+  });
 
 in
 {
