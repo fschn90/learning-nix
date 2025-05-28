@@ -1,5 +1,9 @@
 { pkgs, lib, config, ... }: {
 
+  imports = [
+    ./marker.nix
+  ];
+
   options = {
     scripts.output = lib.mkOption {
       type = lib.types.package;
