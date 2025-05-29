@@ -17,7 +17,6 @@ let
       "white"
     ]);
 
-
   pathStyleType = lib.types.submodule {
     options = {
       weight = lib.mkOption {
@@ -42,6 +41,11 @@ let
       locations = lib.mkOption {
         type = lib.types.listOf lib.types.str;
       };
+
+      style = lib.mkOption {
+        type = pathStyleType;
+        default = { };
+      };
     };
   };
 in
@@ -59,6 +63,7 @@ in
 
     map.paths = lib.mkOption {
       type = lib.types.listOf pathType;
+
     };
   };
   config = {
