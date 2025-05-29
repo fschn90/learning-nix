@@ -31,7 +31,7 @@ let
 
       geodesic = lib.mkOption {
         type = lib.types.bool;
-        default = false;
+        default = true;
       };
     };
   };
