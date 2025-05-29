@@ -1,5 +1,15 @@
 { lib, config, ... }:
 let
+
+  pathStyleType = lib.types.submodule {
+    options = {
+      weight = lib.mkOption {
+        type = lib.types.ints.between 1 20;
+        default = 5;
+      };
+    };
+  };
+
   pathType = lib.types.submodule {
     options = {
       locations = lib.mkOption {
@@ -38,7 +48,10 @@ in
         paramForPath = path:
           let
             attributes =
-              builtins.map attrForLocation path.locations;
+              [
+                "weight:${toString path.style.weight}"
+              ]
+              ++ builtins.map attrForLocation path.locations;
           in
           ''path="${lib.concatStringsSep "|" attributes}"'';
       in
