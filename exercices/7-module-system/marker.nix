@@ -55,16 +55,28 @@ let
         type = markerType;
         default = { };
       };
+
+      arrival = lib.mkOption {
+        type = markerType;
+        default = { };
+      };
     };
 
     config = {
       departure.style.label = lib.mkDefault
         (firstUpperAlnum name);
+      arrival.style.label = lib.mkDefault
+        (firstUpperAlnum name);
+
     };
   });
 
 in
 {
+
+  imports = [
+    ./path.nix
+  ];
 
   options = {
     users = lib.mkOption {
@@ -82,6 +94,7 @@ in
       (lib.concatMap
         (user: [
           user.departure
+          user.arrival
         ])
         (lib.attrValues config.users));
 
@@ -125,6 +138,9 @@ in
     users."test".departure.location = "new york";
     users."acab".departure.location = "caracas";
     users."yuhu".departure.location = "shenzhen";
+
+    users."wy".departure.location = "vienna";
+    users."wy".arrival.location = "amsterdam";
 
   };
 
