@@ -29,6 +29,11 @@ let
         type = colorType;
         default = "blue";
       };
+
+      geodesic = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+      };
     };
   };
 
@@ -84,6 +89,7 @@ in
               [
                 "weight:${toString path.style.weight}"
                 "color:${path.style.color}"
+                "geodesic:${lib.boolToString path.style.geodesic}"
               ]
               ++ builtins.map attrForLocation path.locations;
           in
