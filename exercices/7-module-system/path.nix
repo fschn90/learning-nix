@@ -20,6 +20,16 @@ let
 in
 {
   options = {
+
+    users = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.submodule {
+        options.pathStyle = lib.mkOption {
+          type = pathStyleType;
+          default = { };
+        };
+      });
+    };
+
     map.paths = lib.mkOption {
       type = lib.types.listOf pathType;
     };
@@ -32,6 +42,7 @@ in
           user.departure.location
           user.arrival.location
         ];
+        style = user.pathStyle;
       })
       (lib.filter
         (user:
